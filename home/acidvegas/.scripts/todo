@@ -1,0 +1,19 @@
+#!/bin/sh
+DB=$HOME/.todo.db
+if [ -z $(sqlite3 $DB "SELECT name FROM sqlite_master WHERE type='table'") ]; then
+	sqlite3 $DB "CREATE TABLE TODO (ID INTEGER PRIMARY KEY, DESC TEXT NOT NULL);"
+fi
+if [ $# -eq 0 ]; then
+	data=$(sqlite3 $DB "SELECT ID,DESC FROM TODO" | sed 's/|/\t/g')
+	if [ -z "$data" ]; then
+		echo "nothing to do"
+	else
+		echo "$data"
+	fi
+elif [ $1 = 'add' ]; then
+	desc=$(echo "$@" | sed -e 's/^\w*\ *//')
+	sqlite3 $DB "INSERT INTO TODO (DESC) values ('$desc');"
+elif [ $1 = 'del' ]; then
+	id=$(echo "$@" | sed -e 's/^\w*\ *//')
+	sqlite3 $DB "DELETE FROM TODO WHERE ID=$id"
+fi
