@@ -13,7 +13,7 @@ fi
 
 alias ..='cd ../'
 alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'"
-alias cpass='pass | tr " " " "'
+alias clbin='curl -F \'clbin=<-\' https://clbin.com'
 alias diff='diff --color=auto'
 alias dump='setterm -dump 1 -file screen.dump'
 alias dyn='curl "https://dynamicdns.park-your-domain.com/update?host=pi&domain=CHANGEME.com&password=CHANGEME&ip=$(curl -s ipecho.net/plain)"'
@@ -29,7 +29,6 @@ alias pydebug='python -m trace -t'
 alias rmexif='for IMAGE in $(find ./ -type f \( -iname *.gif -o -iname *.jpg -o -iname *.jpeg -o -iname *.png \)); do exiftool -all= $IMAGE; done'
 alias ssh-add='ssh-add -t 1h'
 alias su='su -l'
-alias tb='(exec 3<>/dev/tcp/termbin.com/9999; cat >&3; cat <&3; exec 3<&-) | xclip -selection c'
 alias todo='~/.scripts/todo'
 alias y2m='youtube-dl --extract-audio --audio-format mp3 --audio-quality 0  -o "%(title)s.%(ext)s" --no-cache-dir --no-call-home'
 

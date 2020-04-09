@@ -14,4 +14,3 @@ PermitRootLogin no
 Port CHANGEME
 PrintLastLog no
 Protocol 2
-UsePam yes
