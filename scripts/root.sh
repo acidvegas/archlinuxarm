@@ -5,7 +5,6 @@ GIT_URL="https://raw.githubusercontent.com/acidvegas/archlinux/master"
 RPI=0
 
 systemctl stop sshd && systemctl disable sshd
-echo -e "#%PAM-1.0\npassword\trequired\tpam_unix.so sha512 shadow rounds=65536" > /etc/pam.d/passwd
 passwd root
 userdel -r alarm
 useradd -m -s /bin/bash acidvegas && gpasswd -a acidvegas wheel && passwd acidvegas
@@ -37,7 +36,7 @@ setup_pacman() {
 	pacman -S gcc make patch pkg-config
 	pacman -S abduco exa git htop man ncdu pass pass-otp python python-pip tor weechat
 	pacman -S alsa-utils cmus id3v2 mps-youtube python-eyed3 youtube-dl
-	pacman -S dmenu feh firefox unclutter xclip
+	pacman -S dmenu firefox unclutter xclip
 	pacman -S xf86-video-fbdev xorg-xinit xorg-server xorg-xsetroot
 }
 
