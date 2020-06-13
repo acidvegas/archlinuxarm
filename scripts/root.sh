@@ -34,7 +34,7 @@ setup_pacman() {
 	fi
 	pacman -Syyu
 	pacman -S gcc make patch pkg-config
-	pacman -S abduco exa git htop man ncdu pass pass-otp python python-pip tor weechat
+	pacman -S abduco exa git htop man ncdu oath-toolkit pass pass-otp python python-pip sudo tor weechat which
 	pacman -S alsa-utils cmus id3v2 mps-youtube python-eyed3 youtube-dl
 	pacman -S dmenu firefox unclutter xclip
 	pacman -S xf86-video-fbdev xorg-xinit xorg-server xorg-xsetroot

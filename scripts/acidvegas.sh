@@ -31,6 +31,7 @@ setup_builds() {
 	cd $HOME/dev/build/dwm && patch drw.c patch_nosquares.diff && patch dwm.c patch_notitles.diff && rm $HOME/dev/build/dwm/*.diff
 	sudo make -C $HOME/dev/build/dwm clean install
 	git clone --depth 1 https://github.com/jarun/googler.git $HOME/dev/build/googler
+	git clone --depth 1 https://github.com/jarun/ddgr.git $HOME/dev/build/ddgr
 	git clone --depth 1 https://aur.archlinux.org/ohsnap.git $HOME/dev/build/ohsnap
 	cd $HOME/dev/build/ohsnap
 	sudo pacman -S fakeroot && makepkg -si && sudo pacman -Rns fakeroot
@@ -44,9 +45,6 @@ setup_builds() {
 	mkdir -p $HOME/.local/share/fonts && wget -O $HOME/.local/share/fonts/BlockZone.ttf https://github.com/ansilove/BlockZone/raw/master/BlockZone.ttf
 	git clone --depth 1 git://git.suckless.org/tabbed $HOME/dev/build/tabbed
 	wget -O $HOME/dev/build/tabbed/config.h $GIT_URL/home/acidvegas/dev/build/tabbed/config.h
-	wget -O $HOME/dev/build/tabbed/patch_autohide.diff $GIT_URL/home/acidvegas/dev/build/tabbed/patch_autohide.diff
-	wget -O $HOME/dev/build/tabbed/patch_clientnumber.diff $GIT_URL/home/acidvegas/dev/build/tabbed/patch_clientnumber.diff
-	cd $HOME/dev/build/tabbed && patch tabbed.c patch_autohide.diff && patch tabbed.c patch_clientnumber.diff && rm $HOME/dev/build/tabbed/*.diff
 	sudo make -C $HOME/dev/build/tabbed clean install
 }
 

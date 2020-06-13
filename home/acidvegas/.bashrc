@@ -13,7 +13,7 @@ fi
 
 alias ..='cd ../'
 alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'"
-alias clbin='curl -F \'clbin=<-\' https://clbin.com'
+alias clbin='curl -F "clbin=<-" https://clbin.com'
 alias diff='diff --color=auto'
 alias dump='setterm -dump 1 -file screen.dump'
 alias dyn='curl "https://dynamicdns.park-your-domain.com/update?host=pi&domain=CHANGEME.com&password=CHANGEME&ip=$(curl -s ipecho.net/plain)"'
@@ -22,7 +22,6 @@ alias google='~/dev/build/googler/googler --colors hgdhhh --noprompt'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias maint='~/.scripts/maint'
-alias mtm='mtm -t mtm-256color'
 alias pinstall='pip install --user'
 alias pubkey='ssh-keygen -y -f ~/.ssh/key'
 alias pydebug='python -m trace -t'
