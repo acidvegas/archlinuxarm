@@ -7,7 +7,6 @@ setup_configs() {
 	wget -O $HOME/.bashrc $GIT_URL/home/acidvegas/.bashrc
 	mkdir $HOME/.config
 	mkdir $HOME/.config/cmus && wget -O $HOME/.config/cmus/autosave $GIT_URL/home/acidvegas/.config/cmus/autosave
-	mkdir $HOME/.config/htop && wget -O $HOME/.config/htop/htoprc $GIT_URL/home/acidvegas/.config/htop/htoprc
 	wget -O $HOME/.gitconfig $GIT_URL/home/acidvegas/.gitconfig
 	mkdir $HOME/.gnupg && wget -O $HOME/.gnupg/gpg.conf $GIT_URL/home/acidvegas/.gnupg/gpg.conf &&	chmod 700 $HOME/.gnupg && chmod 600 $HOME/.gnupg/*
 	mkdir $HOME/.scripts
@@ -30,8 +29,7 @@ setup_builds() {
 	wget -O $HOME/dev/build/dwm/patch_notitles.diff $GIT_URL/home/acidvegas/dev/build/dwm/patch_notitles.diff
 	cd $HOME/dev/build/dwm && patch drw.c patch_nosquares.diff && patch dwm.c patch_notitles.diff && rm $HOME/dev/build/dwm/*.diff
 	sudo make -C $HOME/dev/build/dwm clean install
-	git clone --depth 1 https://github.com/jarun/googler.git $HOME/dev/build/googler
-	git clone --depth 1 https://github.com/jarun/ddgr.git $HOME/dev/build/ddgr
+	git clone --depth 1 https://github.com/deadpixi/mtm.git $HOME/dev/build/mtm
 	git clone --depth 1 https://aur.archlinux.org/ohsnap.git $HOME/dev/build/ohsnap
 	cd $HOME/dev/build/ohsnap
 	sudo pacman -S fakeroot && makepkg -si && sudo pacman -Rns fakeroot
@@ -39,12 +37,15 @@ setup_builds() {
 	wget -O $HOME/dev/build/slstatus/config.h $GIT_URL/home/acidvegas/dev/build/slstatus/config.h
 	sudo make -C $HOME/dev/build/slstatus clean install
 	git clone --depth 1 git://git.suckless.org/st $HOME/dev/build/st
-	wget -O $HOME/dev/build/st/config.h $GIT_URL/home/acidvegas/dev/build/st/config.h
+	wget -O $HOME/dev/build/st/config.h $GIT_URL/home/acidvegas/dev/build/st/config.h # Changes to font, tab size, and colors
 	sed -i 's/it#8,/it#4,/g' $HOME/dev/build/st/st.info
 	sudo make -C $HOME/dev/build/st clean install
 	mkdir -p $HOME/.local/share/fonts && wget -O $HOME/.local/share/fonts/BlockZone.ttf https://github.com/ansilove/BlockZone/raw/master/BlockZone.ttf
 	git clone --depth 1 git://git.suckless.org/tabbed $HOME/dev/build/tabbed
 	wget -O $HOME/dev/build/tabbed/config.h $GIT_URL/home/acidvegas/dev/build/tabbed/config.h
+	wget -O $HOME/dev/build/tabbed/patch_autohide.diff $GIT_URL/home/acidvegas/dev/build/tabbed/patch_autohide.diff
+	wget -O $HOME/dev/build/tabbed/patch_clientnumber.diff $GIT_URL/home/acidvegas/dev/build/tabbed/patch_clientnumber.diff
+	cd $HOME/dev/build/tabbed && patch tabbed.c patch_autohide.diff && patch tabbed.c patch_clientnumber.diff && rm $HOME/dev/build/tabbed/*.diff
 	sudo make -C $HOME/dev/build/tabbed clean install
 }
 

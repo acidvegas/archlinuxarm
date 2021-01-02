@@ -23,6 +23,8 @@ static const char *colors[][3]     = {
 	{ MODKEY|ControlMask|ShiftMask, KEY, toggletag,  {.ui = 1 << TAG} },
 
 static char dmenumon[2]         = "0";
+static const char *brightup[]   = { "brightnessctl", "s", "+10", NULL };
+static const char *brightdown[] = { "brightnessctl", "s", "+10-", NULL };
 static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", "#000000", "-nf", "#FFFFFF", "-sb", "#000000", "-sf", "#00D787", NULL };
 static const char *termcmd[]    = { "tabbed", "-cf", "st", "-w", NULL };
 static const char *mutevol[]    = { "amixer", "-q", "set", "PCM", "toggle", NULL };
@@ -49,6 +51,8 @@ static Key keys[] = {
 	{ MODKEY, XK_F6,     spawn,      {.v = musprev } },
 	{ MODKEY, XK_F7,     spawn,      {.v = mustoggle } },
 	{ MODKEY, XK_F8,     spawn,      {.v = musnext } },
+	{ MODKEY, XK_F11,    spawn,      {.v = brightup } },
+	{ MODKEY, XK_F12,    spawn,      {.v = brightdown } },
 	TAGKEYS(  XK_1, 0)
 	TAGKEYS(  XK_2, 1)
 	TAGKEYS(  XK_3, 2)

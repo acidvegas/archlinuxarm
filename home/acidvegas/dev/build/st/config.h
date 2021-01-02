@@ -5,7 +5,6 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-//static char *font = "Misc Ohsnap.Icons:style=Regular:size=11";
 static char *font = "BlockZone";
 static int borderpx = 2;
 
@@ -96,31 +95,31 @@ unsigned int tabspaces = 4;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-    /* colors */
-    "#000000",
-    "#800000",
-    "#008000",
-    "#808000",
-    "#000080",
-    "#800080",
-    "#008080",
-    "#c0c0c0",
+	/* colors */
+	"#000000",
+	"#800000",
+	"#008000",
+	"#808000",
+	"#000080",
+	"#800080",
+	"#008080",
+	"#c0c0c0",
 
-    /* bright */
-    "#808080",
-    "#ff0000",
-    "#00ff00",
-    "#ffff00",
-    "#0000ff",
-    "#ff00ff",
-    "#00ffff",
-    "#ffffff",
+	/* bright */
+	"#808080",
+	"#ff0000",
+	"#00ff00",
+	"#ffff00",
+	"#0000ff",
+	"#ff00ff",
+	"#00ffff",
+	"#ffffff",
 
-    [255] = 0,
+	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-    "#cccccc",
-    "#555555",
+	"#cccccc",
+	"#555555",
 };
 
 

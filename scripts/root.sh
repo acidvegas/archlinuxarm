@@ -33,9 +33,9 @@ setup_pacman() {
 		sed -i 's/^Architecture = auto/Architecture = armv7h/' /etc/pacman.conf
 	fi
 	pacman -Syyu
-	pacman -S gcc make patch pkg-config
-	pacman -S abduco exa git htop man ncdu oath-toolkit pass pass-otp python python-pip sudo tor weechat which
-	pacman -S alsa-utils cmus id3v2 mps-youtube python-eyed3 youtube-dl
+	pacman -S gcc make patch pkg-config python python-pip
+	pacman -S abduco exa git man ncdu pass-otp sudo tor weechat which
+	pacman -S alsa-utils cmus id3v2 python-eyed3 youtube-dl
 	pacman -S dmenu firefox unclutter xclip
 	pacman -S xf86-video-fbdev xorg-xinit xorg-server xorg-xsetroot
 }
@@ -46,12 +46,12 @@ setup_bash() {
 	echo "[[ -f ~/.bashrc ]] && . ~/.bashrc" > /root/.bash_profile
 	echo -e "[[ $- != *i* ]] && return\nalias diff='diff --color=auto'\nalias grep='grep --color=auto'\nalias ls='ls --color=auto'\nPS1='\e[1;31m> \e[0;33m\w \e[0;37m: '" > /root/.bashrc
 	source /root/.bashrc
-	[ -f /root/.bash_history ] && rm /root/.bash_history
 	history -c && export HISTFILESIZE=0 && export HISTSIZE=0 && unset HISTFILE
+	[ -f /root/.bash_history ] && rm /root/.bash_history
 }
 
 setup_configs() {
-	sed -i 's/^console=tty1/console=tty3/' /boot/cmdline.txt && echo "quiet loglevel=3 logo.nologo" >> /boot/cmdline.txt
+	sed -i 's/^console=tty1/console=tty3/' /boot/cmdline.txt && echo "quiet loglevel=3 logo.nologo consoleblank=0" >> /boot/cmdline.txt
 	if [ $RPI -eq 0 ]; then
 		echo -e "gpu_mem=16\navoid_warnings=1\ndisable_splash=1\ndtparam=act_led_trigger=none\ndtparam=act_led_activelow=on\ndtoverlay=pi3-disable-bt\ndtparam=audio=off" > /boot/config.txt
 	elif [ $RPI -eq 4 ]; then
@@ -62,7 +62,8 @@ setup_configs() {
 	wget -O /etc/fstab $GIT_URL/etc/fstab
 	wget -O /etc/ssh/sshd_config $GIT_URL/etc/ssh/sshd_config
 	wget -O /etc/sudoers.d/sudoers.lecture $GIT_URL/etc/sudoers.d/sudoers.lecture
-	mkdir -p /root/.config/htop && wget -O /root/.config/htop/htoprc $GIT_URL/home/acidvegas/.config/htop/htoprc
+	wget -O /etc/topdefaultrc $GIT_URL/etc/topdefaultrc
+	echo -e "defaults.pcm.card 1\ndefaults.ctl.card 1" > /etc/asound.conf
 	echo -e "set boldtext\nset morespace\nset nohelp\nset nonewlines\nset nowrap\nset quickblank\nset tabsize 4\nunbind ^J main\ninclude \"/usr/share/nano/*.nanorc\"" > /etc/nanorc
 	echo -e "Defaults lecture = always\nDefaults lecture_file = /etc/sudoers.d/sudoers.lecture\nroot ALL=(ALL) ALL\n%wheel ALL=(ALL) ALL" > /etc/sudoers
 	echo -e "[Journal]\nStorage=volatile\nSplitMode=none\nRuntimeMaxUse=500K" > /etc/systemd/journald.conf
