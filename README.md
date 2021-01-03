@@ -3,7 +3,7 @@
 | ------------------ | -------------------------------------------- |
 | ALT   + F#         | Switch to n-th virtual console               |
 | ALT   + LEFT/RIGHT | Switch to next/previous virtual console      |
-| SHIFT + PGUP/PG/DN | Scroll console buffer up/down                |
+| SHIFT + PGUP/PGDN  | Scroll console buffer up/down                |
 | CTRL  + A/E        | Move cursor to begining/end of line          |
 | CTRL  + L          | Clean console                                |
 | CTRL  + R          | Navigate previous command history            |
@@ -16,7 +16,7 @@
 | CTRL  + Y          | Paste cut/copied text                        |
 | CTRL  + C          | Kills current task                           |
 | CTRL  + D          | Inserts an EOF                               |
-| CTRL  + Z          | Pauses current task (Return with fg command) |
+| CTRL  + Z          | Pauses current task *(Return with fg command)* |
 
 ## DWM
 | Key                        | Description                    |
